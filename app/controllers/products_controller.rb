@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-     @product = Product.new(product_params)
+   @product = Product.new(product_params)
    @product.save
    redirect_to product_url @product
   end
@@ -24,18 +24,19 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+   @product = Product.find(params[:id])
    @product.update(product_params)
    redirect_to product_url @product
   end
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    product.destroy
     redirect_to products_url
   end
+  
   private
    def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id)
+   params.require(:product).permit(:name, :description, :price, :category_id)
    end
 end
