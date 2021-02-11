@@ -15,5 +15,7 @@ resources :products
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
   end
-  resources :products
+  resources :products do
+  resources :reviews, only: [:create]
+  end
 end
