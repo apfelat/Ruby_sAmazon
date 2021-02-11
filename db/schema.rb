@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_003737) do
+ActiveRecord::Schema.define(version: 2021_02_11_010359) do
 
   create_table "categories", force: :cascade do |t|
     t.string "major_category_name"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2021_02_11_003737) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "liker_type"
+    t.integer "liker_id"
+    t.string "likeable_type"
+    t.integer "likeable_id"
+    t.datetime "created_at"
+    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
+    t.index ["liker_id", "liker_type"], name: "fk_likes"
   end
 
   create_table "products", force: :cascade do |t|
