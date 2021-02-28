@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :create, :edit, :update, :destroy, :favorite]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :favorite]
   def index
     if sort_params.present?
      @category = Category.request_category(sort_params[:sort_category])
