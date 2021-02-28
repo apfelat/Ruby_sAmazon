@@ -32,9 +32,9 @@ class Dashboard::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-    redirect_to _pathdashboard_products
+    @product = Product.new(product_params)
+    @product.save
+    redirect_to dashboard_products_path
   end
 
   def edit
