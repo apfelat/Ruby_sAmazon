@@ -11,8 +11,8 @@ class Dashboard::CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.new(category_params)
-    category.save
+    @category = Category.new(category_params)
+    @category.save
     redirect_to dashboard_categories_path
   end
 
