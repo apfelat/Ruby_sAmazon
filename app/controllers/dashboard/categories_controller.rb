@@ -36,6 +36,6 @@ class Dashboard::CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name,:description,:major_category_name)
+      params.permit(:name,:description,:major_category_name)
     end
 end
