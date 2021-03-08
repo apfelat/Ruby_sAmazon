@@ -4,7 +4,9 @@ class Dashboard::CategoriesController < ApplicationController
   layout "dashboard/dashboard"
 
   def index
+    @category = Category.new
     @categories = Category.display_list(params[:page])
+    @major_categories = MajorCategory.all
   end
 
   def show
@@ -36,6 +38,6 @@ class Dashboard::CategoriesController < ApplicationController
     end
 
     def category_params
-      params.permit(:name,:description,:major_category_name)
+      params.require(:category).permit(:name,:description,:major_category_name,:major_category_id)
     end
 end
