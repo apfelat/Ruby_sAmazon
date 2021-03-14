@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "dashboard/logout", :to => "admins/sessions#destroy"
   end
     namespace :dashboard do
+    resources :users, only: [:index, :destroy]
     resources :major_categories, except: [:new]
     resources :categories, except: [:new]
     resources :products, except: [:show]
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
   end
-  resource :users, only: [:edit, :update] do
+  resources :users, only: [:edit, :update] do
    collection do
      get "cart", :to => "shopping_carts#index"
      post "cart/create", :to => "shopping_carts#create"
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
      get "mypage/edit_password", :to =>"users#edit_password"
      put "mypage/password", :to => "users#update_password"
      get  "mypage/favorite", :to => "users#favorite"
+     delete "mypage/delete", :to => "users#destroy"
    end
  end
   resources :products do
