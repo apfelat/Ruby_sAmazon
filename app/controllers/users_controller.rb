@@ -34,8 +34,8 @@ class UsersController < ApplicationController
  end
  
  def destroy
-    @user.deleted_flg = User.switch_flg(user.deleted_flg)
-    @user.update
+    @user.deleted_flg = User.switch_flg(@user.deleted_flg)
+    @user.save
     redirect_to mypage_users_url
  end
   

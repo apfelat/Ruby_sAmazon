@@ -57,6 +57,6 @@ class Dashboard::ProductsController < ApplicationController
     end
 
     def product_params
-      params.permit(:name, :description, :price, :category_id)
+      permit(:name, :description, :price, :recommended_flag, :category_id)
     end
 end

@@ -12,11 +12,16 @@ class Dashboard::UsersController < ApplicationController
     @users = User.display_list(params[:pages])
    end
  end
- 
+ def update
+    user = User.find(params[:id])
+    user.deleted_flg = User.switch_flg(user.deleted_flg)
+    user.update!
+    redirect_to dashboard_users_path
+ end
  def destroy
-  user = User.find(params[:id])
-    @user.deleted_flg = User.switch_flg(user.deleted_flg)
-    @user.update
+    user = User.find(params[:id])
+    user.deleted_flg = User.switch_flg(user.deleted_flg)
+    user.save
     redirect_to dashboard_users_path
  end
 end
